@@ -1,0 +1,159 @@
+{
+  "$schema": "https://images.onerom.org/configs/schema.json",
+  "version": 1,
+  "name": "1541 OneROM Selector v1.0.0 - upper ROM socket installation",
+  "description": "Universal NV bootloader plus seven selectable 1541 ROM sets; OneROM installed in the upper ROM socket",
+  "categories": [
+    "drive",
+    "firmware",
+    "commodore",
+    "iec"
+  ],
+  "notes": "UPPER ROM SOCKET configuration. Each selectable set uses exactly one label on the upper $E000 DOS/boot ROM object so 1541 OneROM Selector displays a friendly ROM name; without a label, the ROM filename/path is displayed instead. The label field is intentionally the final parameter in that upper-ROM object as a tested project convention. Replace placeholder files in config/roms with legally obtained 8KB upper 1541 ROM images. Do not redistribute commercial ROM images unless you have permission. The JSON does not install plugins by itself. Program this configuration with the OneROM CLI `onerom program` command and supply both required plugins with `--plugin`; otherwise the plugins are not installed.",
+  "chip_sets": [
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "../firmware/1541-OneROM-Bootloader-Universal-v1.0.0.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "1541 ONEROM BOOTLOADER"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-e000.901229-05.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "ORIGINAL"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "roms/1541-upper-slot-2.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "ROM 2"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "roms/1541-upper-slot-3.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "ROM 3"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "roms/1541-upper-slot-4.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "ROM 4"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "roms/1541-upper-slot-5.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "ROM 5"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "roms/1541-upper-slot-6.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "ROM 6"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "chips": [
+        {
+          "description": "Upper($E000) 8KB ROM",
+          "file": "roms/1541-upper-slot-7.bin",
+          "type": "2364",
+          "cs1": "active_low",
+          "label": "ROM 7"
+        },
+        {
+          "description": "Lower($C000) 8KB ROM",
+          "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
+          "type": "2364",
+          "cs1": "active_low"
+        }
+      ]
+    }
+  ]
+}
