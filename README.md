@@ -4,7 +4,7 @@ A Commodore 64 BASIC front end and universal Commodore 1541 bootloader for selec
 
 ## Release status
 
-This branch contains **v1.1.0 development work** targeting OneROM firmware v0.7.2. The stable v1.0.0 release remains unchanged on `main`.
+This branch contains **v1.1.0 development work** targeting the officially merged OneROM firmware v0.7.2. The stable v1.0.0 release remains unchanged on `main`.
 
 ### Stable hardware-tested baseline (v1.0.0)
 
@@ -88,9 +88,11 @@ The commands in this repository use the included plugin binaries by file path so
 
 ## Safety
 
-The stable v1.0.0 selector requires **SAVE** as the normal completion path after RBCP begins. v1.1.0 development adds an explicit quit-without-saving path; treat it as experimental until the hardware checklist passes.
+The stable v1.0.0 selector requires **SAVE** as the normal completion path after RBCP begins. v1.1.0 development adds an explicit idle-menu cancel path that must close/clean up communication without saving or switching ROMs. The old warning screen and timer will be removed only after this cleanup path is hardware-proven. Interrupting an RBCP/DOS transaction midway is still unsafe.
 
-See `docs/V1.1.0-ROADMAP.md` and `docs/V1.1.0-HARDWARE-TESTING.md`.
+OneROM ORA/plugin APIs are treated as stable and public unless marked deprecated or expected to become deprecated.
+
+See `docs/V1.1.0-ROADMAP.md`, `docs/V1.1.0-HARDWARE-TESTING.md`, and `docs/ONEROM-AUTHOR-NOTES.md`.
 
 Verify ROM images, OneROM orientation, socket wiring, and X1 wiring before applying power. This project is provided **AS IS**, without warranty. Use it at your own risk.
 
