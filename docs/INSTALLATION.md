@@ -1,5 +1,7 @@
 # Installation
 
+> The instructions below describe the stable v1.0.0 release. v1.1.0 development targets OneROM firmware v0.7.2 with USB plugin v0.3.0 and host-control plugin v0.1.3.
+
 ## Requirements
 
 - Commodore 64 or compatible environment capable of running the selector PRG
@@ -39,8 +41,8 @@ Place legally obtained custom 8 KB upper-ROM images in `config/roms/` using the 
 Preserve these rules:
 
 1. Keep the chip ordering appropriate to the physical OneROM/X1 installation.
-2. Give every selectable ROM set exactly one `label` and keep it on the upper `$E000-$FFFF` ROM. The selector uses this as the friendly display name; if it is omitted, the ROM filename/path will be displayed instead.
-3. Keep `label` as the final member of that upper-ROM object for consistency with the tested supplied examples. This ordering is a project convention, not a JSON-schema requirement.
+2. Give every selectable ROM set exactly one `label` and place it on `chips[0]`. RBCP returns the `chips[0]` label as the friendly display name; if it is omitted, the ROM filename/path will be displayed instead.
+3. JSON member order has no functional significance.
 4. Keep the universal bootloader as the first non-plugin multi-chip set.
 
 ## Program OneROM
