@@ -1,0 +1,23 @@
+name: Validate development repository
+
+on:
+  push:
+    branches:
+      - develop-v1.1.0
+  pull_request:
+    branches:
+      - main
+      - develop-v1.1.0
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate configurations and test bundles
+        run: python3 scripts/validate_repository.py
