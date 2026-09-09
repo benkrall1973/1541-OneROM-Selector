@@ -1,4 +1,4 @@
-# Current State Summary — v1.0.0
+# Current State Summary — v1.1.0 Development
 
 ## Working behavior
 
@@ -28,15 +28,18 @@ The final release D64 included here has also been checked structurally, and its 
 - USB v0.2.1 and host-control v0.1.2 plugin binaries
 - Documentation and third-party license notices
 
-## Known operating constraint
+## Current development focus
 
-Once RBCP communication has begun, SAVE is the supported normal completion path. There is no supported quit-without-saving cleanup path after initialization. If the program is unexpectedly terminated and the drive is left in a bad state, power-cycle the 1541.
+The stable v1.0.0 program has no supported quit-without-saving cleanup path after initialization. v1.1.0 development is adding an explicit menu quit that restores the active ROM without writing NV records. This path remains experimental until hardware testing is complete.
+
+One SAVE on device 9 appeared to hang once, then succeeded on the next identical attempt. Repeated device-9 testing is required.
 
 ## Maintenance rules
 
-- Keep exactly one label attached to the upper `$E000-$FFFF` ROM in each selectable set. The selector uses it as the friendly ROM display name; without it, the ROM filename/path is shown instead.
+- Keep exactly one label attached to `chips[0]` in each selectable set. RBCP returns the `chips[0]` label as the friendly ROM display name; without it, the ROM filename/path is shown instead.
 - Preserve physical chip ordering in the upper/lower socket configs.
 - Keep the universal bootloader as the first non-plugin set.
 - Do not modify SAVE/NV verification/final switching behavior without hardware testing.
 - Do not distribute commercial ROM images without permission.
-- Recalculate `SHA256SUMS.txt` after any release-file change.
+- Give every test build a unique temporary version and keep its exact source.
+- Recalculate `SHA256SUMS.txt` when preparing a release candidate.
