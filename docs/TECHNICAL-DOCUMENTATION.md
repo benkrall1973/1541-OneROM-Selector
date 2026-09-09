@@ -15,6 +15,12 @@ Before RBCP initialization, the selector polls IEC devices 8-11. Available drive
 
 After drive selection, the program displays a warning that unexpectedly quitting after communication begins can leave the 1541 requiring a power cycle. At this stage the user can press RETURN to continue or `Q` to exit safely before initialization.
 
+## v1.1.0 API and cleanup policy
+
+OneROM v0.7.2 is merged into the official OneROM `main` branch. ORA/plugin APIs are considered stable and public unless explicitly marked deprecated or expected to become deprecated.
+
+An idle-menu cancel must close/clean up open communication without writing NV data or issuing a ROM switch. It must not attempt to cancel an RBCP/DOS transaction already in progress. The pre-initialization warning and timer may be removed only after this idle cleanup path passes real-hardware testing.
+
 ## Selector socket discovery
 
 The selector initially uses:
@@ -50,7 +56,7 @@ USB and host-control plugins are inserted before the configuration's normal chip
 
 For a multi-chip slot, RBCP returns the label associated with `chips[0]`. Each selectable set should therefore contain exactly one `label`, placed on `chips[0]`, regardless of which physical 1541 ROM socket that object represents.
 
-The selector uses that label as the human-readable ROM name. If it is omitted, OneROM metadata falls back to the ROM filename/path and the selector displays that path instead. JSON member order has no functional significance.
+The selector consumes the slot label returned by RBCP and does not independently choose an upper-ROM object. It uses that label as the human-readable ROM name. If it is omitted, OneROM metadata falls back to the ROM filename/path and the selector displays that path instead. JSON member order has no functional significance.
 
 ## SAVE sequence
 
