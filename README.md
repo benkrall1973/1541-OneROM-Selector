@@ -1,10 +1,10 @@
-# 1541 OneROM Selector v1.0.0
+# 1541 OneROM Selector v1.1.0 Development
 
 A Commodore 64 BASIC front end and universal Commodore 1541 bootloader for selecting and persistently saving 1541 DOS ROM sets on a OneROM-equipped drive.
 
 ## Release status
 
-This repository is the clean public **v1.0.0** baseline.
+This branch contains **v1.1.0 development work** targeting OneROM firmware v0.7.2. The stable v1.0.0 release remains unchanged on `main`.
 
 Tested project baseline:
 
@@ -46,7 +46,7 @@ Both examples use the current `chip_sets` / `chips` naming. OneROM has retained 
 
 For this selector, each selectable ROM set **must have exactly one `label`** if a clean human-readable ROM name is desired. The selector reads OneROM metadata for the display name; without a `label`, OneROM supplies the ROM filename/path instead, so the selector will display that path rather than the intended friendly name.
 
-The `label` belongs to the **upper `$E000-$FFFF` ROM object** in every selectable set, even when OneROM is physically installed in the lower socket. In the supplied examples it is intentionally the **last member** of that upper-ROM object. This last-member placement is a tested project convention, not a JSON-schema requirement.
+RBCP returns the label associated with **`chips[0]`** for a multi-chip slot. Each selectable set must therefore place its single friendly `label` on `chips[0]`, regardless of which physical 1541 ROM socket that object represents. JSON member order has no functional significance.
 
 Commercial ROM images are not included.
 
@@ -77,7 +77,9 @@ The commands in this repository use the included plugin binaries by file path so
 
 ## Safety
 
-Once the selector begins RBCP communication with the drive, use **SAVE** as the normal completion path. Unexpectedly ending the program can leave the 1541 requiring a power cycle. The program displays this warning before communication starts.
+The stable v1.0.0 selector requires **SAVE** as the normal completion path after RBCP begins. v1.1.0 development adds an explicit quit-without-saving path; treat it as experimental until the hardware checklist passes.
+
+See `docs/V1.1.0-ROADMAP.md` and `docs/V1.1.0-HARDWARE-TESTING.md`.
 
 Verify ROM images, OneROM orientation, socket wiring, and X1 wiring before applying power. This project is provided **AS IS**, without warranty. Use it at your own risk.
 
