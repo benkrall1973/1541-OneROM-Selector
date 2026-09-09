@@ -9,7 +9,7 @@
     "commodore",
     "iec"
   ],
-  "notes": "UPPER ROM SOCKET configuration. Each selectable set uses exactly one label on the upper $E000 DOS/boot ROM object so 1541 OneROM Selector displays a friendly ROM name; without a label, the ROM filename/path is displayed instead. The label field is intentionally the final parameter in that upper-ROM object as a tested project convention. Replace placeholder files in config/roms with legally obtained 8KB upper 1541 ROM images. Do not redistribute commercial ROM images unless you have permission. The JSON does not install plugins by itself. Program this configuration with the OneROM CLI `onerom program` command and supply both required plugins with `--plugin`; otherwise the plugins are not installed.",
+  "notes": "UPPER ROM SOCKET configuration. For every multi-chip slot, RBCP returns the label from chips[0]. Each selectable set therefore has exactly one friendly display label on chips[0], regardless of physical ROM address. Replace placeholder files with legally obtained ROM images. The JSON does not install plugins by itself; supply the required plugins to the OneROM CLI program command.",
   "chip_sets": [
     {
       "type": "multi",
