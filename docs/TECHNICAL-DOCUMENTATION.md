@@ -48,14 +48,9 @@ USB and host-control plugins are inserted before the configuration's normal chip
 
 ## Label rule
 
-The label belongs to the upper `$E000-$FFFF` DOS/KERNAL ROM in every selectable set:
+For a multi-chip slot, RBCP returns the label associated with `chips[0]`. Each selectable set should therefore contain exactly one `label`, placed on `chips[0]`, regardless of which physical 1541 ROM socket that object represents.
 
-- OneROM in upper socket: upper ROM is `chips[0]`.
-- OneROM in lower socket: upper ROM is `chips[1]` through X1.
-
-For 1541 OneROM Selector, each selectable set should contain exactly one `label` on that upper-ROM object. The selector uses the label as the human-readable ROM name. If the label is omitted, OneROM metadata falls back to the ROM filename/path and the selector displays that path instead.
-
-The sanitized configs keep `label` as the final member of the upper-ROM object. That ordering is a tested project convention for the supplied configurations; it is not imposed by the JSON schema.
+The selector uses that label as the human-readable ROM name. If it is omitted, OneROM metadata falls back to the ROM filename/path and the selector displays that path instead. JSON member order has no functional significance.
 
 ## SAVE sequence
 
