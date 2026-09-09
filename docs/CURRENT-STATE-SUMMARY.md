@@ -30,9 +30,9 @@ The final release D64 included here has also been checked structurally, and its 
 
 ## Current development focus
 
-The stable v1.0.0 program has no supported quit-without-saving cleanup path after initialization. v1.1.0 development is adding an explicit menu quit that restores the active ROM without writing NV records. This path remains experimental until hardware testing is complete.
+The stable v1.0.0 program has no supported quit-without-saving cleanup path after initialization. v1.1.0 development is adding a true idle-menu cancel that cleans up communication without writing NV records or switching ROMs. This path remains experimental until hardware testing is complete.
 
-One SAVE on device 9 appeared to hang once, then succeeded on the next identical attempt. Repeated device-9 testing is required.
+The OneROM author successfully tested the current selector on a real 1541 with in-development v0.7.2, OneROM in the lower socket, at device 8. One SAVE on device 9 appeared to hang once, then succeeded on the next identical attempt. Repeated device-9 testing is required.
 
 ## Maintenance rules
 
@@ -40,6 +40,7 @@ One SAVE on device 9 appeared to hang once, then succeeded on the next identical
 - Preserve physical chip ordering in the upper/lower socket configs.
 - Keep the universal bootloader as the first non-plugin set.
 - Do not modify SAVE/NV verification/final switching behavior without hardware testing.
+- Do not expose idle-menu cancel during an active RBCP/DOS transaction.
 - Do not distribute commercial ROM images without permission.
 - Give every test build a unique temporary version and keep its exact source.
 - Recalculate `SHA256SUMS.txt` when preparing a release candidate.
