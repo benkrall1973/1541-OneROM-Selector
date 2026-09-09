@@ -6,7 +6,7 @@ A Commodore 64 BASIC front end and universal Commodore 1541 bootloader for selec
 
 This branch contains **v1.1.0 development work** targeting OneROM firmware v0.7.2. The stable v1.0.0 release remains unchanged on `main`.
 
-Tested project baseline:
+### Stable hardware-tested baseline (v1.0.0)
 
 - Commodore 1541 with OneROM Fire 24E
 - OneROM firmware v0.7.1
@@ -16,6 +16,15 @@ Tested project baseline:
 - Selector v1.0.0
 - OneROM installed in either the upper `$E000-$FFFF` or lower `$C000-$DFFF` ROM socket
 - Selector supports IEC drive addresses 8-11
+
+### v1.1.0 compatibility target
+
+- OneROM firmware v0.7.2
+- USB plugin v0.3.0
+- host-control plugin v0.1.3
+- Selector test versions `T1.1.0-XX`
+
+USB plugin v0.2.1 belongs to the stable v1.0.0 baseline and is not compatible with OneROM firmware v0.7.2.
 
 The included D64 has been filesystem-checked and the exact included PRG has been successfully loaded and run in **VICE 3.9** using `x64sc.exe` (64-bit) on Windows 10.
 
@@ -36,7 +45,9 @@ The universal bootloader reads the saved selection at drive startup and boots th
 - `docs/` - installation, CLI, technical, current-state, and release-validation documentation
 - `LICENSE` - MIT license for this project's original material
 - `licenses/` and `THIRD-PARTY-NOTICES.md` - third-party licensing and attribution
-- `SHA256SUMS.txt` - release-file checksums
+- `SHA256SUMS.txt` - checksums for the inherited stable v1.0.0 snapshot; development test bundles carry their own checksums
+- `tests/` - test-build packaging rules and test-results template
+- `scripts/validate_repository.py` - development repository checks
 
 ## Configuration examples
 
