@@ -2,10 +2,10 @@
 
 ## v1.1.0 - In development
 
-- Targets OneROM firmware v0.7.2, USB plugin v0.3.0, and host-control plugin v0.1.3.
+- Targets the officially merged OneROM firmware v0.7.2, USB plugin v0.3.0, and host-control plugin v0.1.3.
 - Corrects the multi-chip label rule: the friendly label belongs on `chips[0]`.
-- Plans an explicit quit-without-saving path that avoids selection and custom-name NV writes.
-- Removes the pre-initialization warning screen and delay once clean quit is hardware-proven.
+- Plans a true idle-menu cancel path that cleans up communication without saving, writing NV, or switching ROMs.
+- Removes the pre-initialization warning screen and delay only after clean communication shutdown is hardware-proven.
 - Changes the program credit to `BUILT WITH CHATGPT`.
 - Requires unique temporary versions and matching source for every test build.
 - Adds device-8/device-9 SAVE and QUIT regression testing.
