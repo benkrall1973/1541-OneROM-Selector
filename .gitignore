@@ -1,0 +1,22 @@
+# Local ROM images and private test material
+config/roms/*.bin
+!config/roms/README.md
+*.rom
+
+# Emulator and local working files
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Python validation cache
+__pycache__/
+*.py[cod]
+
+# Unpack/build scratch
+build/
+dist/
+work/
+tmp/
