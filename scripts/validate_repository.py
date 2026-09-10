@@ -11,6 +11,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TEST_RE = re.compile(r"^T1\.1\.0-\d{2}$")
+TEXT_CHECKSUM_SUFFIXES = {
+    ".bas",
+    ".json",
+    ".md",
+    ".ps1",
+    ".py",
+    ".sh",
+    ".txt",
+    ".yaml",
+    ".yml",
+}
 errors: list[str] = []
 
 
@@ -60,6 +71,22 @@ def parse_checksums(path: Path) -> dict[str, str]:
     return entries
 
 
+def checksum_matches(data: bytes, expected: str, suffix: str) -> bool:
+    """Match raw bytes, or canonical LF bytes for known text files.
+
+    Git may materialize text files with CRLF on Windows even though checksum
+    manifests describe the canonical LF content stored in the repository.
+    Binary artifacts remain byte-exact and never receive line-ending
+    normalization.
+    """
+    if hashlib.sha256(data).hexdigest() == expected:
+        return True
+    if suffix.lower() not in TEXT_CHECKSUM_SUFFIXES:
+        return False
+    canonical = data.replace(b"\r\n", b"\n")
+    return canonical != data and hashlib.sha256(canonical).hexdigest() == expected
+
+
 def validate_test_bundles() -> None:
     tests = ROOT / "tests"
     if not tests.is_dir():
@@ -103,8 +130,7 @@ def validate_test_bundles() -> None:
             if not target.is_file():
                 fail(f"tests/{version}: checksum target is missing: {relative}")
                 continue
-            actual = hashlib.sha256(target.read_bytes()).hexdigest()
-            if actual != expected:
+            if not checksum_matches(target.read_bytes(), expected, target.suffix):
                 fail(f"tests/{version}: checksum mismatch: {relative}")
 
         expected_files = bas + prg + d64
