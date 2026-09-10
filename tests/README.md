@@ -27,6 +27,8 @@ Retained tests:
   `GET_BOOT_SLOT_INFO` to test clean exit on repeated runs.
 - `T1.1.0-23`: adds a deterministic VICE simulation and corrects the
   lower-socket search/success messages.
+- `T1.1.0-24`: removes custom ROM-name editing and its NV helpers, reducing
+  the tokenized PRG by 2,720 bytes while retaining `chip[0]` labels.
 
 ## Packaging rules
 
