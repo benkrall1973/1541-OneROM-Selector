@@ -37,6 +37,8 @@ Retained tests:
   only the old/new rows while selecting an IEC device address.
 - `T1.1.0-28`: clears the full screen immediately before BASIC `READY.` and
   gives the IEC selector the same compact control-label style as the ROM menu.
+- `T1.1.0-29`: reports each actual loading, socket-search, service, retrieval,
+  and menu stage; the VICE simulation pauses so the sequence can be watched.
 
 ## Packaging rules
 
