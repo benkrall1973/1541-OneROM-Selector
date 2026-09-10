@@ -42,6 +42,8 @@ Retained tests:
 - `T1.1.0-30`: names the three screens on the bottom row, labels the IEC
   countdown, clarifies Save-and-Boot, and replaces the repeated ROM-name list
   with a compact `X ROMS FOUND` result.
+- `T1.1.0-31`: aligns the title/version at the top-left edge and preserves a
+  one-character content margin for the compact ROM-count result.
 
 ## Packaging rules
 
