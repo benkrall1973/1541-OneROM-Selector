@@ -1,7 +1,10 @@
-# Current hardware baseline
+# Current test candidate
 
-The current hardware-proven OneROM v0.7.2 baseline is
-[`T1.1.0-21`](T1.1.0-21/README.md).
+The current OneROM v0.7.2 test candidate is
+[`T1.1.0-22`](T1.1.0-22/README.md).
+
+The latest hardware-proven baseline remains
+[`T1.1.0-21`](T1.1.0-21/README.md) until T22 completes physical testing.
 
 Confirmed on a physical Commodore 1541:
 

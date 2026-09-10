@@ -23,6 +23,8 @@ Retained tests:
 
 - `T1.1.0-16` through `T1.1.0-20`: v0.7.2 diagnostics and development steps.
 - `T1.1.0-21`: hardware-proven first-run clean-exit baseline.
+- `T1.1.0-22`: current candidate; uses the boot RAM/flash pair returned by
+  `GET_BOOT_SLOT_INFO` to test clean exit on repeated runs.
 
 ## Packaging rules
 
