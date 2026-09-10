@@ -29,6 +29,8 @@ Retained tests:
   lower-socket search/success messages.
 - `T1.1.0-24`: removes custom ROM-name editing and its NV helpers, reducing
   the tokenized PRG by 2,720 bytes while retaining `chip[0]` labels.
+- `T1.1.0-25`: removes the redundant selected-name line and updates only the
+  old/new highlighted rows during menu movement to eliminate screen flashing.
 
 ## Packaging rules
 
