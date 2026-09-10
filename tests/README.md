@@ -52,6 +52,8 @@ Retained tests:
   IEC screen while preserving its direct, flicker-free updates.
 - `T1.1.0-35`: draws the ROM screen's bottom framing before its menu body,
   matching the visible construction order of IEC Select and Load.
+- `T1.1.0-36`: preserves T35 as the VICE simulator and provides a smaller
+  hardware-only build with all unreachable simulation code removed.
 
 ## Packaging rules
 

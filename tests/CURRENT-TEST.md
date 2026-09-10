@@ -1,7 +1,7 @@
 # Current test candidate
 
 The current OneROM v0.7.2 test candidate is
-[`T1.1.0-35`](T1.1.0-35/README.md).
+[`T1.1.0-36`](T1.1.0-36/README.md).
 
 The latest hardware-proven baseline remains
 [`T1.1.0-21`](T1.1.0-21/README.md) until T22 completes physical testing.
