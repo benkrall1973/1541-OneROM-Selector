@@ -25,6 +25,8 @@ Retained tests:
 - `T1.1.0-21`: hardware-proven first-run clean-exit baseline.
 - `T1.1.0-22`: current candidate; uses the boot RAM/flash pair returned by
   `GET_BOOT_SLOT_INFO` to test clean exit on repeated runs.
+- `T1.1.0-23`: adds a deterministic VICE simulation and corrects the
+  lower-socket search/success messages.
 
 ## Packaging rules
 
