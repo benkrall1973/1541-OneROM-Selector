@@ -46,6 +46,8 @@ Retained tests:
   one-character content margin for the compact ROM-count result.
 - `T1.1.0-32`: centers the title/version and removes punctuation from the
   staged Load-screen status statements.
+- `T1.1.0-33`: realigns selective ROM-row drawing after the header moved up,
+  ensuring only the selected candidate remains highlighted.
 
 ## Packaging rules
 
