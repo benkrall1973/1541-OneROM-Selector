@@ -39,6 +39,9 @@ Retained tests:
   gives the IEC selector the same compact control-label style as the ROM menu.
 - `T1.1.0-29`: reports each actual loading, socket-search, service, retrieval,
   and menu stage; the VICE simulation pauses so the sequence can be watched.
+- `T1.1.0-30`: names the three screens on the bottom row, labels the IEC
+  countdown, clarifies Save-and-Boot, and replaces the repeated ROM-name list
+  with a compact `X ROMS FOUND` result.
 
 ## Packaging rules
 
