@@ -1,31 +1,30 @@
-# 1541 OneROM Selector T1.1.0-07 — Verified inactive-slot quit
+# 1541 OneROM Selector T1.1.0-07 — FAILED HARDWARE TEST
 
-T1.1.0-07 uses the same safe ROM-loading pattern as the selector's proven SAVE path, without writing NV data.
+> **Do not use this build.** Real-hardware testing on OneROM v0.7.2 failed during Q=Quit.
 
-## T1.1.0-06 result
+T1.1.0-07 attempted to use the selector's SAVE-style inactive-slot loading sequence without writing NV data.
 
-`LOAD_AND_EXIT` did not report an RBCP error, but reloading the ROM directly over the active RAM slot left the drive running a corrupted image. A power cycle restored normal operation and directory access, confirming flash and hardware were unharmed.
+## Hardware result
 
-## New approach
+The program displayed:
 
-On Q, the selector:
+```text
+CLEAN ROM LOAD FAILED
+RBCP ERROR 3
+POWER-CYCLE DRIVE
+```
 
-1. Enters RBCP command-response mode and queries the active RAM slot.
-2. Chooses the other OneROM RAM slot.
-3. Loads the currently active flash ROM into that inactive slot.
-4. Waits for and verifies the LOAD_SLOT response.
-5. Sends terminal SWITCH_AND_EXIT to the fully loaded slot.
-6. Performs no NV name or selection write.
+OneROM rejected the LOAD_SLOT request before the terminal slot switch. The operator power-cycled the drive as instructed.
 
-The externally visible ROM selection remains the same. Only OneROM's internal active RAM bank changes.
+## Conclusion
 
-## First test
+This method is retired:
 
-1. Power-cycle and verify a directory.
-2. Run `ONEROMT11007`.
-3. Make no menu changes.
-4. Press Q.
-5. Wait for `QUIT COMPLETE - NO CHANGES`.
-6. Verify a directory and confirm the active ROM is unchanged.
+1. Query the active RAM slot.
+2. Choose the inactive RAM slot.
+3. Load the currently selected flash ROM into that inactive slot.
+4. Switch to it and exit.
 
-If `CLEAN ROM LOAD FAILED` appears, record the RBCP error and power-cycle. Do not press RUN/STOP during cleanup.
+Neither direct active-slot restoration nor inactive-slot same-ROM loading is accepted as a clean quit implementation for the selector.
+
+Do not retry T1.1.0-07. Use it only as a recorded failed test.
