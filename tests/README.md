@@ -54,6 +54,8 @@ Retained tests:
   matching the visible construction order of IEC Select and Load.
 - `T1.1.0-36`: preserves T35 as the VICE simulator and provides a smaller
   hardware-only build with all unreachable simulation code removed.
+- `T1.1.0-37`: adds a clean IEC Select Q-to-BASIC path and a centered LOAD
+  warning against RUN/STOP interruption, separated from the footer by a blank row.
 
 ## Packaging rules
 
