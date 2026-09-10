@@ -33,6 +33,8 @@ Retained tests:
   old/new highlighted rows during menu movement to eliminate screen flashing.
 - `T1.1.0-26`: corrects the redraw row so the blank line below `ACTIVE:` is
   preserved and consolidates the controls onto one line.
+- `T1.1.0-27`: makes simulated Save terminate at BASIC `READY.` and updates
+  only the old/new rows while selecting an IEC device address.
 
 ## Packaging rules
 
