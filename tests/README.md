@@ -31,6 +31,8 @@ Retained tests:
   the tokenized PRG by 2,720 bytes while retaining `chip[0]` labels.
 - `T1.1.0-25`: removes the redundant selected-name line and updates only the
   old/new highlighted rows during menu movement to eliminate screen flashing.
+- `T1.1.0-26`: corrects the redraw row so the blank line below `ACTIVE:` is
+  preserved and consolidates the controls onto one line.
 
 ## Packaging rules
 
