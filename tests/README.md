@@ -35,6 +35,8 @@ Retained tests:
   preserved and consolidates the controls onto one line.
 - `T1.1.0-27`: makes simulated Save terminate at BASIC `READY.` and updates
   only the old/new rows while selecting an IEC device address.
+- `T1.1.0-28`: clears the full screen immediately before BASIC `READY.` and
+  gives the IEC selector the same compact control-label style as the ROM menu.
 
 ## Packaging rules
 
