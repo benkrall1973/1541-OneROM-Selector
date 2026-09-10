@@ -1,4 +1,16 @@
-# 1541 OneROM Selector T1.1.0-08 — Logged Q Diagnostic
+# 1541 OneROM Selector T1.1.0-08 — FAILED HARDWARE TEST
+
+> **Do not use this build.** The RBCP query succeeded, but mandatory logging to device 9 stopped the BASIC program before finalization.
+
+## Hardware result
+
+The checkpoint returned RAM count 16, active RAM slot 1, ROM type 2, fourth byte 255, menu active 2, menu choice 2, and menu count 7. The following file-log operation then failed:
+
+    ?DEVICE NOT PRESENT ERROR IN 3564
+
+Because BASIC stopped before the proven Save pathway, the OneROM command-response session was not finalized. The required recovery is to power-cycle drive 8 before reading a directory.
+
+T1.1.0-09 removes every device-9 logging operation and retains the successful screen checkpoint.
 
 This build diagnoses the slot mapping used by Q and then exits through the selector's existing hardware-proven Save pathway. It does **not** use the failed T1.1.0-02 through T1.1.0-07 cleanup methods.
 
