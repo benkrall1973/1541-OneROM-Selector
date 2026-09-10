@@ -50,6 +50,8 @@ Retained tests:
   ensuring only the selected candidate remains highlighted.
 - `T1.1.0-34`: centers the fixed-width automatic-selection countdown on the
   IEC screen while preserving its direct, flicker-free updates.
+- `T1.1.0-35`: draws the ROM screen's bottom framing before its menu body,
+  matching the visible construction order of IEC Select and Load.
 
 ## Packaging rules
 
