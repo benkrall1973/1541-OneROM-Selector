@@ -44,6 +44,8 @@ Retained tests:
   with a compact `X ROMS FOUND` result.
 - `T1.1.0-31`: aligns the title/version at the top-left edge and preserves a
   one-character content margin for the compact ROM-count result.
+- `T1.1.0-32`: centers the title/version and removes punctuation from the
+  staged Load-screen status statements.
 
 ## Packaging rules
 
