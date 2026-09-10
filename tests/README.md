@@ -48,6 +48,8 @@ Retained tests:
   staged Load-screen status statements.
 - `T1.1.0-33`: realigns selective ROM-row drawing after the header moved up,
   ensuring only the selected candidate remains highlighted.
+- `T1.1.0-34`: centers the fixed-width automatic-selection countdown on the
+  IEC screen while preserving its direct, flicker-free updates.
 
 ## Packaging rules
 
