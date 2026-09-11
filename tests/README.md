@@ -56,6 +56,9 @@ Retained tests:
   hardware-only build with all unreachable simulation code removed.
 - `T1.1.0-37`: adds a clean IEC Select Q-to-BASIC path and a centered LOAD
   warning against RUN/STOP interruption, separated from the footer by a blank row.
+- `T1.1.0-38`: closes and restores the C64 IEC channel after `LOAD_AND_EXIT`,
+  initializes the resumed 1541 DOS, and renders fixed screen text without visible
+  left-to-right construction.
 
 ## Packaging rules
 
