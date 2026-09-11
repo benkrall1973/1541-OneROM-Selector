@@ -65,6 +65,8 @@ Retained tests:
   decodes RAM slot zero, and removes the failed T38/T39 post-exit commands.
 - `T1.1.0-41`: preserves T40's proven clean-exit logic while polishing Load
   spacing and adding a left margin before each bottom-left screen name.
+- `T1.1.0-42`: draws all fixed IEC-screen elements immediately, removes the
+  selected-drive transition screen, and clarifies the ROM/ROM-set count.
 
 ## Packaging rules
 
