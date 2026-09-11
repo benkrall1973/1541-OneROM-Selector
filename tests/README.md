@@ -59,6 +59,8 @@ Retained tests:
 - `T1.1.0-38`: closes and restores the C64 IEC channel after `LOAD_AND_EXIT`,
   initializes the resumed 1541 DOS, and renders fixed screen text without visible
   left-to-right construction.
+- `T1.1.0-39`: removes the unsafe post-terminal close, retains only local IEC
+  cleanup, and uses a delayed DOS `UJ` soft reset to recover the restored drive.
 
 ## Packaging rules
 
