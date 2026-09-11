@@ -71,6 +71,8 @@ Retained tests:
   quit displaying `QUITTING`, with no additional Return-key checkpoint.
 - `T1.1.0-44`: aligns IEC Select address-list spacing, separator, and controls
   with the established ROM Select layout.
+- `T1.1.0-45`: removes the IEC polling ellipsis, brackets the ROM count, and
+  relabels the Save action as `S=SAVE/REBOOT`.
 
 ## Packaging rules
 
