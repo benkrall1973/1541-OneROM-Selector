@@ -1,5 +1,7 @@
 # T1.1.0-39 terminal-safe soft-reset recovery
 
+> **FAILED ON PHYSICAL HARDWARE:** Q corrupted the served ROM. Do not use this build except for historical analysis. Power-cycle the drive to recover.
+
 T38 worked once after a physical drive restart but failed on the second run, and its post-terminal `CLOSE15` contradicted the OneROM v0.7.2 terminal-command rules. T39 removes that unsafe close and the ineffective DOS `I` experiment.
 
 The v0.7.2 `GET_BOOT_SLOT_INFO` mapping and `LOAD_AND_EXIT` bytes remain unchanged. After the silent terminal command, T39 abandons the obsolete channel locally with `CLRCHN` and the KERNAL file-count reset, waits three seconds, sends DOS `UJ` through a fresh command channel, abandons that reset channel locally, waits another three seconds, and returns to a cleared BASIC screen.

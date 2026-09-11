@@ -61,6 +61,8 @@ Retained tests:
   left-to-right construction.
 - `T1.1.0-39`: removes the unsafe post-terminal close, retains only local IEC
   cleanup, and uses a delayed DOS `UJ` soft reset to recover the restored drive.
+- `T1.1.0-40`: restores T21's active/back-channel RAM strategy, correctly
+  decodes RAM slot zero, and removes the failed T38/T39 post-exit commands.
 
 ## Packaging rules
 
