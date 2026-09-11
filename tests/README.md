@@ -69,6 +69,8 @@ Retained tests:
   selected-drive transition screen, and clarifies the ROM/ROM-set count.
 - `T1.1.0-43`: converts the proven Q diagnostic into an automatic user-facing
   quit displaying `QUITTING`, with no additional Return-key checkpoint.
+- `T1.1.0-44`: aligns IEC Select address-list spacing, separator, and controls
+  with the established ROM Select layout.
 
 ## Packaging rules
 
