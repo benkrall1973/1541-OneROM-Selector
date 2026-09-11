@@ -74,7 +74,9 @@ Retained tests:
 - `T1.1.0-45`: removes the IEC polling ellipsis, brackets the ROM count, and
   relabels the Save action as `S=SAVE/REBOOT`.
 - `T1.1.0-46`: initializes DOS and waits one second before the OneROM service
-  upload to test reliable quit/reload when launched from that same real drive.
+  upload; hardware testing showed this regressed both launch paths.
+- `T1.1.0-47`: restores T45 startup and automates the successful manual DOS
+  initialization after a conservative post-`LOAD_AND_EXIT` delay.
 
 ## Packaging rules
 

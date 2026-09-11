@@ -1,16 +1,12 @@
-# T1.1.0-46 same-drive launch initialization
+# T1.1.0-47 delayed post-exit DOS initialization
 
-**Hardware result: failed.** The pre-upload DOS initialization caused the
-post-Q directory failure with both the physical-disk launch and the formerly
-working Ultimate-injected PRG launch. A manual DOS `I` after Q restored the
-directory in both cases. T47 removes this startup change.
+T47 removes T46's regressive startup initialization and tests the manual
+recovery at its successful point after `LOAD_AND_EXIT`:
 
-T46 preserves the hardware-proven Q-Quit behavior and adds one targeted startup
-step for a selector loaded from the same physical 1541 it will control:
-
-- displays `INITIALIZING DRIVE` on the Load screen;
-- sends a normal DOS `I` command after the PRG has finished loading;
-- waits one second before uploading the OneROM service.
+- startup behavior returns to T45;
+- Q uses the proven active/back-channel RAM and flash pair;
+- after terminal exit, it waits three seconds, closes the old command channel,
+  sends DOS `I`, and returns to a clear BASIC screen.
 
 The Q-Quit implementation is unchanged from T40. It reloads the RAM slot
 actively serving the RBCP back-channel from the flash slot of the active menu
@@ -21,7 +17,7 @@ The instant fixed-text renderer introduced in T38 is retained.
 ## Hardware test
 
 1. Power-cycle the physical 1541 and verify a directory read.
-2. Load and run the D64's `ONEROMT11046` from a real disk in that same 1541.
+2. Load and run the D64's `ONEROMT11047` from a real disk in that same 1541.
 3. Continue to ROM Select and press Q.
 4. Verify `QUITTING` appears and the program returns automatically to a clear
    BASIC `READY.` screen without another keypress.
@@ -31,7 +27,7 @@ The instant fixed-text renderer introduced in T38 is retained.
    and the two directory reads.
 7. Complete a Save/Reboot regression with a changed ROM.
 
-T35 remains the VICE interface-simulation build. T46 is intended for physical-drive testing.
+T35 remains the VICE interface-simulation build. T47 is intended for physical-drive testing.
 
 ## Size comparison
 
