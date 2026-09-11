@@ -67,6 +67,8 @@ Retained tests:
   spacing and adding a left margin before each bottom-left screen name.
 - `T1.1.0-42`: draws all fixed IEC-screen elements immediately, removes the
   selected-drive transition screen, and clarifies the ROM/ROM-set count.
+- `T1.1.0-43`: converts the proven Q diagnostic into an automatic user-facing
+  quit displaying `QUITTING`, with no additional Return-key checkpoint.
 
 ## Packaging rules
 

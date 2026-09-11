@@ -1,0 +1,12 @@
+# Preserved active-slot root cause
+
+T21 and T22 use identical drive helpers but different terminal arguments. T21 names current active RAM plus active ROM flash; T22 through T39 name boot RAM plus boot flash.
+
+The v0.7.2 host-control source records `s_state.active_slot` as both the served slot and the destination of every back-channel write. `LOAD_AND_EXIT` repairs the entire image when the named RAM slot is the one being served. Reloading a different slot can exit command-response mode without repairing the served ROM.
+
+T21's apparent second-run RAM value 255 had a separate parsing cause: valid slot zero is a NUL byte, which BASIC `GET#` returns as an empty string. Initializing `RA` to 255 made zero look missing. T43 initializes it to zero and still rejects an explicit byte 255.
+
+T43 deliberately changes no RBCP parameters, IEC-selection logic, or terminal
+exit behavior from T40. Only the successful Q-path presentation and manual
+checkpoint are removed; the guards remain in place to prevent an unsafe
+terminal command.
