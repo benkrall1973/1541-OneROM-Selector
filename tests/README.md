@@ -73,6 +73,8 @@ Retained tests:
   with the established ROM Select layout.
 - `T1.1.0-45`: removes the IEC polling ellipsis, brackets the ROM count, and
   relabels the Save action as `S=SAVE/REBOOT`.
+- `T1.1.0-46`: initializes DOS and waits one second before the OneROM service
+  upload to test reliable quit/reload when launched from that same real drive.
 
 ## Packaging rules
 
