@@ -63,6 +63,8 @@ Retained tests:
   cleanup, and uses a delayed DOS `UJ` soft reset to recover the restored drive.
 - `T1.1.0-40`: restores T21's active/back-channel RAM strategy, correctly
   decodes RAM slot zero, and removes the failed T38/T39 post-exit commands.
+- `T1.1.0-41`: preserves T40's proven clean-exit logic while polishing Load
+  spacing and adding a left margin before each bottom-left screen name.
 
 ## Packaging rules
 
