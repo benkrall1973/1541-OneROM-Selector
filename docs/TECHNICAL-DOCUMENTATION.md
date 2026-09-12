@@ -36,3 +36,6 @@ source, reconstructs the single-file D64, and reproduces the universal
 bootloader by applying the selector-specific patch to the retained base
 bootloader. Every result must match the hardware-tested release byte-for-byte.
 See `BUILDING.md` for Windows, Linux, and macOS commands.
+
+The supplied OneROM source snapshot identifies upstream commit
+[`ce5ae6b86e16e4d69cdbf8e2f453934267f23f63`](https://github.com/piersfinlayson/one-rom/commit/ce5ae6b86e16e4d69cdbf8e2f453934267f23f63).

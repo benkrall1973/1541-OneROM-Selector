@@ -40,3 +40,9 @@ in the supplied OneROM source archive.
 
 The upstream OneROM firmware and CLI are separate projects and are not rebuilt
 by this script. Copyrighted 1541 DOS ROM images are intentionally excluded.
+
+The OneROM source archive supplied while preparing this release identifies
+upstream commit [`ce5ae6b86e16e4d69cdbf8e2f453934267f23f63`](https://github.com/piersfinlayson/one-rom/commit/ce5ae6b86e16e4d69cdbf8e2f453934267f23f63).
+That permanent revision identifies the upstream source snapshot for provenance;
+this selector repository supplies its retained base image and the reproducible
+selector-specific patch described above.
