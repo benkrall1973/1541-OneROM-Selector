@@ -17,6 +17,8 @@ Hardware testing covered physical-floppy and 1541 Ultimate launches, ROM switchi
 - The longest approximate tokenized line record remains below the 255-byte BASIC limit.
 - Both release configuration files parse as valid JSON and pass repository label-placement validation.
 - The universal v1.1.0 bootloader is byte-for-byte identical to the proven universal v1.0.0 bootloader.
+- `scripts/build_release.py` reproduces the PRG, D64, and universal bootloader
+  byte-for-byte from their documented inputs.
 - `scripts/validate_repository.py` passes.
 
 ## Runtime dependencies

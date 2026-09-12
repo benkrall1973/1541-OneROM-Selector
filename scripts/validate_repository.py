@@ -170,6 +170,33 @@ def validate_test_bundles() -> None:
                 fail(f"tests/{version}: checksum missing for {relative}")
 
 
+def validate_root_checksums() -> None:
+    manifest = ROOT / "SHA256SUMS.txt"
+    if not manifest.is_file():
+        fail("SHA256SUMS.txt is missing")
+        return
+    entries = parse_checksums(manifest)
+    for relative, expected in entries.items():
+        normalized = relative[2:] if relative.startswith("./") else relative
+        target = ROOT / normalized
+        if not target.is_file():
+            fail(f"SHA256SUMS.txt: checksum target is missing: {relative}")
+            continue
+        if not checksum_matches(target.read_bytes(), expected, target.suffix):
+            fail(f"SHA256SUMS.txt: checksum mismatch: {relative}")
+
+    required = {
+        "./BUILDING.md",
+        "./scripts/build_release.py",
+        "./scripts/patch_universal_bootloader.py",
+        "./scripts/tokenize_basic_v2.py",
+        "./scripts/update_single_prg_d64.py",
+    }
+    missing = sorted(required.difference(entries))
+    for relative in missing:
+        fail(f"SHA256SUMS.txt: checksum missing for {relative}")
+
+
 def validate_private_rom_guard() -> None:
     allowed = {
         "1541-OneROM-Bootloader-Universal-v1.1.0.bin",
@@ -189,6 +216,7 @@ def validate_private_rom_guard() -> None:
 def main() -> int:
     validate_release()
     validate_configs()
+    validate_root_checksums()
     validate_test_bundles()
     validate_private_rom_guard()
     if errors:

@@ -28,3 +28,11 @@ After terminal exit, the C64 waits three seconds, closes the old command channel
 `src/1541-OneROM-Selector-v1.1.0.bas` is the readable source corresponding to `bin/1541-OneROM-Selector-v1.1.0.PRG`. The root D64 contains that PRG byte-for-byte.
 
 The release bootloader is `firmware/1541-OneROM-Bootloader-Universal-v1.1.0.bin`. Its executable bytes are unchanged from the proven universal v1.0.0 bootloader; the new filename and label identify the v1.1.0 release package.
+
+## Reproducible release build
+
+`scripts/build_release.py` rebuilds the tokenized PRG from the ASCII BASIC
+source, reconstructs the single-file D64, and reproduces the universal
+bootloader by applying the selector-specific patch to the retained base
+bootloader. Every result must match the hardware-tested release byte-for-byte.
+See `BUILDING.md` for Windows, Linux, and macOS commands.

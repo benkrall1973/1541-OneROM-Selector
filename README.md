@@ -28,6 +28,7 @@ The selector polls IEC devices 8-11, lets the user choose an available drive, se
 - `config/` - sanitized upper/lower-socket OneROM configuration examples
 - `firmware/` - tested universal 1541 OneROM bootloader binary
 - `docs/` - installation, CLI, technical, and release-validation documentation
+- `BUILDING.md` - reproducible, byte-for-byte release build instructions
 - `tests/` - retained v1.1.0 development history and hardware-test evidence
 - `SHA256SUMS.txt` - SHA-256 checksums for the release files
 
