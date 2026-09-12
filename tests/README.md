@@ -11,11 +11,9 @@ physical OneROM was still running older firmware. Those results cannot be used
 to evaluate the v0.7.2 functions. The deleted files remain recoverable from Git
 history if they are ever needed for historical investigation.
 
-`T1.1.0-21` is the current hardware-proven baseline. On a fresh physical-drive
-start it has successfully changed ROMs, exited to BASIC `READY.`, and allowed
-an immediate directory read without resetting either machine. A second run can
-return current RAM `255`; the safety check rejects that state without sending a
-terminal command.
+`T1.1.0-47` is the final hardware-proven baseline promoted to v1.1.0. It passed
+repeated Save/Reboot, Q-Quit, selector reload, and physical-disk directory
+tests when launched from both a real floppy and 1541 Ultimate.
 
 See [`CURRENT-TEST.md`](CURRENT-TEST.md) for the concise current-state pointer.
 

@@ -1,113 +1,72 @@
-# 1541 OneROM Selector v1.1.0 Development
+# 1541 OneROM Selector v1.1.0
 
 A Commodore 64 BASIC front end and universal Commodore 1541 bootloader for selecting and persistently saving 1541 DOS ROM sets on a OneROM-equipped drive.
 
 ## Release status
 
-This branch contains **v1.1.0 development work** targeting the officially merged OneROM firmware v0.7.2. The stable v1.0.0 release remains unchanged on `main`.
-
-### Stable hardware-tested baseline (v1.0.0)
+Version 1.1.0 is the current hardware-tested release. It targets:
 
 - Commodore 1541 with OneROM Fire 24E
-- OneROM firmware v0.7.1
-- USB plugin v0.2.1
-- host-control plugin v0.1.2
-- Universal bootloader v1.0.0
-- Selector v1.0.0
-- OneROM installed in either the upper `$E000-$FFFF` or lower `$C000-$DFFF` ROM socket
-- Selector supports IEC drive addresses 8-11
-
-### v1.1.0 compatibility target
-
 - OneROM firmware v0.7.2
-- USB plugin v0.3.0
-- host-control plugin v0.1.3
-- Selector test versions `T1.1.0-XX`
+- USB and host-control plugins resolved automatically by the current OneROM CLI
+- OneROM in either the upper `$E000-$FFFF` or lower `$C000-$DFFF` ROM socket
+- IEC drive addresses 8-11
 
-USB plugin v0.2.1 belongs to the stable v1.0.0 baseline and is not compatible with OneROM firmware v0.7.2.
-
-The included D64 has been filesystem-checked and the exact included PRG has been successfully loaded and run in **VICE 3.9** using `x64sc.exe` (64-bit) on Windows 10.
+The selector was repeatedly tested from both a physical floppy disk and a PRG mounted with 1541 Ultimate. ROM selection, Save/Reboot, Q-Quit, repeated runs, and post-quit directory access all completed successfully on real hardware.
 
 ## What it does
 
-The selector polls IEC devices 8-11, lets the user choose an available drive, searches for OneROM in either physical ROM socket, reads compiled ROM labels and saved custom names, shows the active/selected ROM, allows names to be edited or restored, saves the selected ROM in OneROM NV storage, verifies the save, and switches the drive to the selected ROM set.
+The selector polls IEC devices 8-11, lets the user choose an available drive, searches both 1541 ROM sockets for OneROM, retrieves configured ROM labels, displays the active ROM, saves the selected ROM in OneROM NV storage, verifies the save, and reboots into the selected ROM set.
 
-The universal bootloader reads the saved selection at drive startup and boots the selected DOS ROM after a power cycle.
+`Q` exits without changing the saved ROM. The v1.1.0 cleanup path restores normal drive DOS operation and returns the C64 to a clear BASIC `READY.` screen.
 
 ## Repository layout
 
-- `1541-OneROM-Selector-v1.0.0.d64` - ready-to-run C64 disk image
-- `bin/` - tokenized C64 PRG
-- `src/` - ASCII BASIC source corresponding to the release PRG
+- `1541-OneROM-Selector-v1.1.0.d64` - ready-to-run C64 disk image
+- `bin/1541-OneROM-Selector-v1.1.0.PRG` - tokenized C64 program
+- `src/1541-OneROM-Selector-v1.1.0.bas` - matching ASCII BASIC source
 - `config/` - sanitized upper/lower-socket OneROM configuration examples
 - `firmware/` - tested universal 1541 OneROM bootloader binary
-- `plugins/` - exact OneROM plugin binaries used by the tested baseline
-- `docs/` - installation, CLI, technical, current-state, and release-validation documentation
-- `LICENSE` - MIT license for this project's original material
-- `licenses/` and `THIRD-PARTY-NOTICES.md` - third-party licensing and attribution
-- `SHA256SUMS.txt` - checksums for the inherited stable v1.0.0 snapshot; development test bundles carry their own checksums
-- `tests/` - test-build packaging rules and test-results template
-- `scripts/validate_repository.py` - development repository checks
+- `docs/` - installation, CLI, technical, and release-validation documentation
+- `tests/` - retained v1.1.0 development history and hardware-test evidence
+- `SHA256SUMS.txt` - SHA-256 checksums for the release files
 
-## Configuration examples
+## Configuration
 
-The public configs are intentionally sanitized. They contain a stock 1541 ROM example plus placeholder upper-ROM filenames for the remaining selectable slots. Replace the placeholders with legally obtained 8 KB upper-ROM images.
+The public examples contain a stock 1541 ROM example and placeholder filenames for other legally obtained 8 KB upper-ROM images. Commercial ROM images are not included.
 
-Both examples use the current `chip_sets` / `chips` naming. OneROM has retained backward compatibility with the older `rom_sets` / `roms` names, but the current names also validate against the current schema.
+Each selectable multi-chip ROM set must have exactly one friendly `label`, located on `chips[0]`. RBCP returns the `chips[0]` label to the selector. Without it, the ROM filename or path is displayed instead.
 
-For this selector, each selectable ROM set **must have exactly one `label`** if a clean human-readable ROM name is desired. The selector reads OneROM metadata for the display name; without a `label`, OneROM supplies the ROM filename/path instead, so the selector will display that path rather than the intended friendly name.
+Use the config matching the physical socket:
 
-RBCP returns the label associated with **`chips[0]`** for a multi-chip slot. Each selectable set must therefore place its single friendly `label` on `chips[0]`, regardless of which physical 1541 ROM socket that object represents. JSON member order has no functional significance.
-
-Commercial ROM images are not included.
-
-## OneROM CLI quick start
-
-New users should start with the OneROM CLI itself:
-
-```powershell
-onerom --version
-onerom scan
-onerom inspect info
-onerom scan --slots
-```
-
-`onerom scan` reports the connected OneROM serial number and board information. `onerom inspect info` provides the device identity and firmware details, and `onerom scan --slots` shows the ROM slots. When more than one OneROM is connected, use `--serial "YOUR_SERIAL_NUMBER"` to select the intended device. The official OneROM CLI documents these as the standard discovery and inspection commands.
-
-See `docs/CLI-COMMANDS.md` for the complete beginner workflow and the exact programming commands for this release.
+- `config/1541-OneROM-Config-Upper-Socket-v1.1.0.example.json`
+- `config/1541-OneROM-Config-Lower-Socket-v1.1.0.example.json`
 
 ## OneROM programming
 
-See `docs/INSTALLATION.md` and `docs/CLI-COMMANDS.md`.
+Firmware v0.7.2 and the required plugins are installed by the current OneROM CLI. Use named plugin resolution so the CLI obtains the compatible USB and host-control plugins:
 
-**Important:** the OneROM configuration JSON files do not install the plugins by themselves. To get the USB and host-control plugins installed into the OneROM firmware, use the OneROM CLI `program` command with the configuration JSON and both plugin binaries supplied on the command line. The CLI compiles the configuration and downloads the resulting firmware to the OneROM as part of that programming operation.
+```powershell
+onerom program --config config/1541-OneROM-Config-Upper-Socket-v1.1.0.example.json --board fire-24-e --plugin usb --plugin host-control
+```
 
-Do not treat the JSON files as standalone firmware images, and do not program a separately built firmware image that was created without the required plugin arguments. If the plugins are omitted from the CLI programming command, the selector's RBCP/host-control functions will not have the required plugin firmware installed.
+Substitute the lower-socket config when appropriate. See `docs/INSTALLATION.md` and `docs/CLI-COMMANDS.md` for the complete workflow.
 
-The commands in this repository use the included plugin binaries by file path so the tested USB v0.2.1 and host-control v0.1.2 versions are reproducible. Users may instead use OneROM's named plugin resolution if they deliberately want newer compatible plugin versions, but the bundled file-based commands are the authoritative v1.0.0 path.
+## Controls
 
-## Safety
+- IEC Select: cursor up/down, RETURN to continue, or `Q` to quit
+- ROM Select: cursor up/down, `S` to Save/Reboot, or `Q` to quit
 
-The stable v1.0.0 selector requires **SAVE** as the normal completion path after RBCP begins. v1.1.0 development adds an explicit idle-menu cancel path that must close/clean up communication without saving or switching ROMs. The old warning screen and timer will be removed only after this cleanup path is hardware-proven. Interrupting an RBCP/DOS transaction midway is still unsafe.
+Do not press RUN/STOP while the LOAD screen is communicating with the drive. If communication is interrupted, power-cycle the 1541 before continuing.
 
-OneROM ORA/plugin APIs are treated as stable and public unless marked deprecated or expected to become deprecated.
+## Bootloader
 
-See `docs/V1.1.0-ROADMAP.md`, `docs/V1.1.0-HARDWARE-TESTING.md`, and `docs/ONEROM-AUTHOR-NOTES.md`.
+`firmware/1541-OneROM-Bootloader-Universal-v1.1.0.bin` is the tested universal bootloader used by both release configs. It is release-labeled v1.1.0 so it cannot be confused with the earlier package; its executable bytes are unchanged.
 
-Verify ROM images, OneROM orientation, socket wiring, and X1 wiring before applying power. This project is provided **AS IS**, without warranty. Use it at your own risk.
+`firmware/1541-OneROM-Bootloader-Base-v1.0.0.bin` is retained only as a development reference.
 
 ## Licensing
 
-Original 1541 OneROM Selector material is released under the MIT License. See `LICENSE`.
+Original project material is released under the MIT License. OneROM and RBCP remain third-party projects with their own notices. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and `licenses/`.
 
-OneROM and RBCP remain third-party projects with their own notices. See `THIRD-PARTY-NOTICES.md` and `licenses/`.
-
-## Release notes
-
-See `CHANGELOG.md`. Mechanical release checks are recorded in `docs/RELEASE-VALIDATION.md`.
-
-
-## Bootloader binaries
-
-- `firmware/1541-OneROM-Bootloader-Universal-v1.0.0.bin` is the tested universal bootloader used by the release configs.
-- `firmware/1541-OneROM-Bootloader-Base-v1.0.0.bin` is the verified original/base bootloader binary retained as a development reference. It is not the recommended release bootloader.
+Verify ROM images, OneROM orientation, socket wiring, and X1 wiring before applying power. This project is provided **AS IS**, without warranty.

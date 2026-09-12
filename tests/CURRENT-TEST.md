@@ -1,20 +1,15 @@
-# Current test candidate
+# Final v1.1.0 test baseline
 
-The current OneROM v0.7.2 test candidate is
-[`T1.1.0-47`](T1.1.0-47/README.md).
+[`T1.1.0-47`](T1.1.0-47/README.md) is the hardware-proven baseline promoted to Selector v1.1.0.
 
-The latest hardware-proven clean-exit baseline is
-[`T1.1.0-40`](T1.1.0-40/README.md).
+Confirmed on a physical Commodore 1541 with OneROM firmware v0.7.2:
 
-Confirmed on a physical Commodore 1541:
+- launch from a physical floppy and from 1541 Ultimate;
+- ROM selection and Save/Reboot;
+- repeated Q-Quit runs without ROM corruption;
+- repeated directory reads after Q-Quit; and
+- repeated selector runs without resetting the C64 or power-cycling the drive.
 
-- ROM selection and switching works.
-- The first clean-exit attempt after a physical drive start returns the C64 to
-  BASIC `READY.`.
-- A physical-disk directory can be read immediately without resetting the C64
-  or power-cycling the 1541.
-- Two consecutive Q-Quit runs completed without ROM corruption.
+The production source preserves T1.1.0-47 behavior exactly. Only its on-screen selector and firmware title strings changed for release.
 
-Continue development with the next unused test identifier. Do not renumber the
-retained tests because their identifiers are tied to hardware photographs,
-checksums, and Git history.
+Future development must use the next unused test identifier and preserve T1.1.0-47 unchanged as the release evidence.

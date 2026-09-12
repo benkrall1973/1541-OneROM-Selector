@@ -13,8 +13,7 @@ Describe the exact functional or documentation change.
 ## Compatibility
 
 - [ ] OneROM firmware version recorded.
-- [ ] USB plugin version recorded.
-- [ ] host-control plugin version recorded.
+- [ ] OneROM CLI/plugin requirements recorded.
 - [ ] Every multi-chip friendly label is on `chips[0]`.
 
 ## Hardware testing
@@ -29,5 +28,5 @@ Describe the exact functional or documentation change.
 
 ## Release protection
 
-- [ ] Stable v1.0.0 artifacts were not overwritten.
+- [ ] Stable v1.1.0 artifacts were not changed without a new release version.
 - [ ] Layout/colors and existing behavior changed only as documented.

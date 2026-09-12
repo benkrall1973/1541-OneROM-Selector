@@ -1,7 +1,7 @@
 {
   "$schema": "https://images.onerom.org/configs/schema.json",
   "version": 1,
-  "name": "1541 OneROM Selector v1.0.0 - lower ROM socket installation",
+  "name": "1541 OneROM Selector v1.1.0 - lower ROM socket installation",
   "description": "Universal NV bootloader plus seven selectable 1541 ROM sets; OneROM installed in the lower ROM socket",
   "categories": [
     "drive",
@@ -9,7 +9,7 @@
     "commodore",
     "iec"
   ],
-  "notes": "LOWER ROM SOCKET configuration. For every multi-chip slot, RBCP returns the label from chips[0]. Each selectable set therefore has exactly one friendly display label on chips[0], regardless of physical ROM address. Replace placeholder files with legally obtained ROM images. The JSON does not install plugins by itself; supply the required plugins to the OneROM CLI program command.",
+  "notes": "LOWER ROM SOCKET configuration for OneROM firmware v0.7.2. For every multi-chip slot, RBCP returns the label from chips[0]. Each selectable set therefore has exactly one friendly display label on chips[0], regardless of physical ROM address. Replace placeholder files with legally obtained ROM images. Use the current OneROM CLI with the usb and host-control plugins.",
   "chip_sets": [
     {
       "type": "multi",
@@ -19,11 +19,11 @@
           "file": "https://www.zimmers.net/anonftp/pub/cbm/firmware/drives/new/1541/1541-c000.325302-01.bin",
           "type": "2364",
           "cs1": "active_low",
-          "label": "1541 ONEROM BOOTLOADER"
+          "label": "1541 ONEROM BOOT V1.1.0"
         },
         {
           "description": "Upper($E000) 8KB ROM",
-          "file": "../firmware/1541-OneROM-Bootloader-Universal-v1.0.0.bin",
+          "file": "../firmware/1541-OneROM-Bootloader-Universal-v1.1.0.bin",
           "type": "2364",
           "cs1": "active_low"
         }

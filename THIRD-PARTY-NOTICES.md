@@ -9,11 +9,11 @@ The selector/bootloader work is based on the ROM Bus Control Protocol (RBCP) by 
 - License copy: `licenses/RBCP-MIT.txt`
 - Upstream source: https://github.com/piersfinlayson/rom-bus-control-protocol
 
-The v1.0.0 repository does **not** bundle a separate RBCP reference-source snapshot. The previous snapshot was not a build dependency for the release artifacts and included platform-specific reference configuration that could be mistaken for authoritative 1541 build source. Use the upstream RBCP repository for protocol/reference source.
+The repository does **not** bundle a separate RBCP reference-source snapshot. Use the upstream RBCP repository for protocol and reference source.
 
 ## OneROM
 
-The plugin binaries in `plugins/` and the OneROM interface used by this project originate from Piers Finlayson's OneROM project.
+The OneROM interface used by this project originates from Piers Finlayson's OneROM project. Compatible plugins are resolved by the current OneROM CLI and are not redistributed here.
 
 - Included OneROM license copy: `licenses/OneROM-LICENSE.md`
 - Upstream source: https://github.com/piersfinlayson/one-rom

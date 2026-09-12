@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mechanical checks for 1541 OneROM Selector development branches."""
+"""Mechanical checks for 1541 OneROM Selector releases and test bundles."""
 
 from __future__ import annotations
 
@@ -55,6 +55,36 @@ def validate_configs() -> None:
                     f"{path.relative_to(ROOT)}: chip_sets[{index}] must have "
                     f"exactly one label on chips[0], found {locations}"
                 )
+
+
+def validate_release() -> None:
+    required = [
+        ROOT / "1541-OneROM-Selector-v1.1.0.d64",
+        ROOT / "bin" / "1541-OneROM-Selector-v1.1.0.PRG",
+        ROOT / "src" / "1541-OneROM-Selector-v1.1.0.bas",
+        ROOT / "firmware" / "1541-OneROM-Bootloader-Universal-v1.1.0.bin",
+    ]
+    for path in required:
+        if not path.is_file():
+            fail(f"{path.relative_to(ROOT)}: required v1.1.0 release file is missing")
+
+    source = required[2]
+    if source.is_file():
+        text = source.read_text(encoding="ascii", errors="replace")
+        for title in ("1541 ONEROM SELECTOR V1.1.0", "ONEROM FW V0.7.2"):
+            if title not in text:
+                fail(f"{source.relative_to(ROOT)}: missing release title {title!r}")
+        if "TESTING ONEROM" in text or "T1.1.0-" in text:
+            fail(f"{source.relative_to(ROOT)}: contains a development title")
+
+    bootloader = required[3]
+    if bootloader.is_file() and bootloader.stat().st_size != 8192:
+        fail(f"{bootloader.relative_to(ROOT)}: expected an 8192-byte bootloader")
+
+    for config in sorted((ROOT / "config").glob("*v1.1.0.example.json")):
+        text = config.read_text(encoding="utf-8", errors="replace")
+        if "1541-OneROM-Bootloader-Universal-v1.1.0.bin" not in text:
+            fail(f"{config.relative_to(ROOT)}: does not reference the v1.1.0 bootloader")
 
 
 def parse_checksums(path: Path) -> dict[str, str]:
@@ -142,7 +172,7 @@ def validate_test_bundles() -> None:
 
 def validate_private_rom_guard() -> None:
     allowed = {
-        "1541-OneROM-Bootloader-Universal-v1.0.0.bin",
+        "1541-OneROM-Bootloader-Universal-v1.1.0.bin",
         "1541-OneROM-Bootloader-Base-v1.0.0.bin",
     }
     for path in ROOT.rglob("*"):
@@ -157,6 +187,7 @@ def validate_private_rom_guard() -> None:
 
 
 def main() -> int:
+    validate_release()
     validate_configs()
     validate_test_bundles()
     validate_private_rom_guard()

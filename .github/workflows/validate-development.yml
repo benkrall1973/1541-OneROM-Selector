@@ -1,8 +1,9 @@
-name: Validate development repository
+name: Validate repository
 
 on:
   push:
     branches:
+      - main
       - develop-v1.1.0
   pull_request:
     branches:
@@ -19,5 +20,5 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Validate configurations and test bundles
+      - name: Validate release configuration and test bundles
         run: python3 scripts/validate_repository.py
